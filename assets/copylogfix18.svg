@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1024" height="1024" role="img" aria-label="CopyLogFix18 icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#312E81"/>
+      <stop offset="1" stop-color="#6366F1"/>
+    </linearGradient>
+    <mask id="cut">
+      <rect width="512" height="512" fill="#fff"/>
+      <rect x="180" y="76" width="152" height="96" rx="34" fill="#000"/>
+      <g stroke="#000" stroke-width="16" stroke-linecap="round">
+        <path d="M188 236H300"/>
+        <path d="M188 286H264"/>
+      </g>
+      <g transform="rotate(-35 340 372)">
+        <rect x="226" y="326" width="228" height="92" rx="46" fill="#000"/>
+      </g>
+    </mask>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="url(#bg)"/>
+  <g mask="url(#cut)" fill="#FFFFFF"><rect x="128" y="120" width="256" height="310" rx="40"/></g>
+  <rect x="196" y="92" width="120" height="60" rx="24" fill="#FFFFFF"/>
+  <g transform="rotate(-35 340 372)">
+    <rect x="255" y="340" width="170" height="64" rx="32" fill="#FFC857"/>
+    <rect x="312" y="340" width="56" height="64" fill="#FFE29A"/>
+    <g fill="#E3A52F">
+      <circle cx="328" cy="356" r="4"/><circle cx="352" cy="356" r="4"/>
+      <circle cx="328" cy="388" r="4"/><circle cx="352" cy="388" r="4"/>
+    </g>
+  </g>
+</svg>

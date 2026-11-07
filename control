@@ -1,0 +1,12 @@
+Package: com.burc334.copylogfix18
+Name: CopyLogFix18
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Description: iOS 18 compatibility fix for CopyLog 1.7.x that prevents the pasted daemon crash caused by DRPasteAnnouncementContinuityEndpoint.
+Depiction: https://burc334.github.io/CopyLogFix18/
+Icon: https://burc334.github.io/CopyLogFix18/icon.png
+SileoDepiction: https://burc334.github.io/CopyLogFix18/depiction.json
+Maintainer: burc334
+Author: burc334
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 16.0), me.tomt000.copylog (>= 1.7)

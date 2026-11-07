@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#312E81">
+  <meta name="description" content="CopyLogFix18 is a rootless iOS jailbreak tweak that fixes the confirmed pasted crash caused by CopyLog 1.7.x on iOS 18.">
+  <meta property="og:title" content="CopyLogFix18">
+  <meta property="og:description" content="Fix the confirmed pasted crash caused by CopyLog 1.7.x on iOS 18.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://burc334.github.io/CopyLogFix18/icon.png?v=1.0.0">
+  <title>CopyLogFix18</title>
+  <link rel="icon" href="icon.png?v=1.0.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="hero-copy">
+      <p class="eyebrow">Rootless + RootHide</p>
+      <h1>CopyLogFix18</h1>
+      <p class="summary">Fix the confirmed <code>pasted</code> crash caused by CopyLog 1.7.x on iOS 18.</p>
+      <div class="meta">
+        <span>Version 1.0.0</span>
+        <span><code>com.burc334.copylogfix18</code></span>
+        <span>MIT</span>
+      </div>
+      </div>
+      <img class="hero-icon" src="icon.png?v=1.0.0" width="112" height="112" alt="CopyLogFix18 icon">
+    </header>
+
+    <section class="card">
+      <h2>Compatibility</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Build</th>
+            <th>Architecture</th>
+            <th>Compatibility</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>RootHide</td>
+            <td><code>iphoneos-arm64e</code></td>
+            <td>Tested on iOS 18.4.1 (Dopamine 3, RootHide)</td>
+          </tr>
+          <tr>
+            <td>Rootless</td>
+            <td><code>iphoneos-arm64</code></td>
+            <td>Expected to work on iOS 16+ rootless jailbreaks</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="note">Requires CopyLog 1.7 or 1.7.1 and iOS 16.0 or later. Where the endpoint already implements <code>-persistentIdentifier</code>, the tweak is a no-op.</p>
+    </section>
+
+    <section class="card">
+      <h2>What it fixes</h2>
+      <p>CopyLog 1.7/1.7.1 injects <code>CopyLogPasteD.dylib</code> into the system <code>pasted</code> daemon. That dylib calls <code>-persistentIdentifier</code> on the paste's source and destination endpoints without checking that the endpoint implements it. On iOS 18.4.1 those endpoints can be <code>DRPasteAnnouncementContinuityEndpoint</code>, which does not implement the selector, so <code>pasted</code> crashes with an unrecognized selector.</p>
+      <p>CopyLogFix18 adds a non-matching <code>-persistentIdentifier</code> implementation to that class, but only if it does not already implement it. CopyLog's comparison then returns false and falls through to the system implementation instead of crashing.</p>
+    </section>
+
+    <section class="card">
+      <h2>What it does not fix</h2>
+      <ul>
+        <li>It is not a general iOS 18 compatibility patch for CopyLog.</li>
+        <li>It does not modify CopyLog's SpringBoard UI, keyboard daemon, edit menu, rich content, notifications, history, favorites, search, or scroll performance.</li>
+        <li>It does not replace CopyLog and contains no CopyLog code or assets.</li>
+        <li>Other crashes or broken features need separate evidence and separate fixes.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>How it works</h2>
+      <p>The tweak is filtered to the <code>pasted</code> executable only. At load time it checks whether <code>DRPasteAnnouncementContinuityEndpoint</code> implements <code>-persistentIdentifier</code>. If it does not, the tweak adds a method that returns a fixed non-matching <code>NSData</code> sentinel. The method is retried when a new dyld image loads, in case the class lives in a lazily loaded image. No CopyLog classes are swizzled and no CopyLog files are replaced.</p>
+    </section>
+
+    <section class="card">
+      <h2>Install</h2>
+      <ol>
+        <li>Install CopyLog 1.7 or 1.7.1 first.</li>
+        <li>Download the matching deb:
+          <ul>
+            <li>RootHide: <code>com.burc334.copylogfix18_1.0.0_iphoneos-arm64e.deb</code></li>
+            <li>Rootless: <code>com.burc334.copylogfix18_1.0.0_iphoneos-arm64.deb</code></li>
+          </ul>
+        </li>
+        <li>Install it with Sileo, Zebra, or Filza.</li>
+        <li>Respring. The package's <code>postinst</code> restarts <code>pasted</code>.</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>Verification</h2>
+      <p>SHA-256 checksums are published in <code>SHA256SUMS.txt</code> with the GitHub release. Verify the downloaded deb before installing it.</p>
+    </section>
+
+    <section class="card">
+      <h2>Support</h2>
+      <p>Open an issue on the <a href="https://github.com/burc334/CopyLogFix18/issues">GitHub repository</a>. Include your iOS version, jailbreak, device model, CopyLog version, and CopyLogFix18 version.</p>
+    </section>
+
+    <section class="card">
+      <h2>License</h2>
+      <p>MIT</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>CopyLogFix18 · Rootless + RootHide</p>
+  </footer>
+</body>
+</html>

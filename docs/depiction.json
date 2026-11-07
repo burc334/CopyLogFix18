@@ -1,0 +1,85 @@
+{
+  "class": "DepictionTabView",
+  "minVersion": "0.1",
+  "tintColor": "#4338CA",
+  "tabs": [
+    {
+      "class": "DepictionStackView",
+      "tabname": "Details",
+      "views": [
+        {
+          "class": "DepictionHeaderView",
+          "title": "CopyLogFix18",
+          "subtitle": "Version 1.0.0"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "Fix the confirmed `pasted` crash caused by CopyLog 1.7.x on iOS 18."
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "Package",
+          "text": "com.burc334.copylogfix18"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "Version",
+          "text": "1.0.0"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "RootHide",
+          "text": "iphoneos-arm64e \u00b7 tested on iOS 18.4.1 (Dopamine 3)"
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "Rootless",
+          "text": "iphoneos-arm64 \u00b7 expected on iOS 16+ rootless jailbreaks"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "### What it fixes\n\nCopyLog 1.7/1.7.1 calls `-persistentIdentifier` on the paste's source and destination endpoints without checking that the endpoint implements it. On iOS 18.4.1 those endpoints can be `DRPasteAnnouncementContinuityEndpoint`, which does not implement the selector, so `pasted` crashes with an unrecognized selector. CopyLogFix18 adds a non-matching implementation only when the class does not already implement it, so CopyLog falls through to the system path instead of crashing."
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "### What it does not fix\n\n- It is not a general iOS 18 compatibility patch for CopyLog.\n- It does not modify CopyLog's SpringBoard UI, keyboard daemon, edit menu, rich content, notifications, history, favorites, search, or scroll performance.\n- It does not replace CopyLog and contains no CopyLog code or assets.\n- Other crashes or broken features need separate evidence and separate fixes."
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "### How it works\n\nThe tweak is filtered to the `pasted` executable only. At load time it adds `-persistentIdentifier` to `DRPasteAnnouncementContinuityEndpoint` if the class does not already implement it. The method returns a fixed non-matching `NSData` sentinel, so CopyLog's `-isEqualToData:` comparison fails and the system implementation is used. The check is retried when a new dyld image loads. No CopyLog classes are swizzled and no CopyLog files are replaced."
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "### Requirements\n\n- CopyLog 1.7 or 1.7.1 installed.\n- iOS 16.0 or later.\n- A jailbroken device with Substrate or ElleKit injection.\n- The RootHide build for RootHide devices; the rootless build for rootless devices."
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "### Install\n\n1. Install CopyLog 1.7 or 1.7.1 first.\n2. Download the matching deb: RootHide (`iphoneos-arm64e`) or Rootless (`iphoneos-arm64`).\n3. Install with Sileo, Zebra, or Filza.\n4. Respring. The package restarts `pasted`."
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "### Verification\n\nSHA-256 checksums are published in `SHA256SUMS.txt` with the GitHub release. Verify the downloaded deb before installing it."
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "### Compatibility\n\nTested on iOS 18.4.1 (Dopamine 3, RootHide) on iPhone 11 Pro Max. The rootless build is expected to work on iOS 16+ rootless jailbreaks. Requires CopyLog 1.7 or 1.7.1. Where the endpoint already implements `-persistentIdentifier`, the tweak is a no-op."
+        },
+        {
+          "class": "DepictionTableTextView",
+          "title": "License",
+          "text": "MIT"
+        }
+      ]
+    },
+    {
+      "class": "DepictionStackView",
+      "tabname": "Changelog",
+      "views": [
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "### 1.0.0\n\n- Initial release.\n- Prevents the confirmed `pasted` crash caused by `DRPasteAnnouncementContinuityEndpoint`.\n- Filtered to the `pasted` executable only.\n- Rootless and RootHide packages."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+2c7bcc655536517e3fa04946d8c93121ac008f5f95f17d7a6dd63d840833cbe6  com.burc334.copylogfix18_1.0.0_iphoneos-arm64.deb
+cb1a9ab80e540aefb9a1774a496efbff24d779138215ac836f043c7f09894482  com.burc334.copylogfix18_1.0.0_iphoneos-arm64e.deb
