@@ -14,7 +14,7 @@
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "Fix the confirmed `pasted` crash caused by CopyLog 1.7.x on iOS 18."
+          "markdown": "Fix the CopyLog 1.7.x pasted crash on iOS 18."
         },
         {
           "class": "DepictionTableTextView",
@@ -28,13 +28,17 @@
         },
         {
           "class": "DepictionTableTextView",
-          "title": "RootHide",
-          "text": "iphoneos-arm64e \u00b7 tested on iOS 18.4.1 (Dopamine 3)"
+          "title": "roothide",
+          "text": "iphoneos-arm64e · tested on iOS 18.4.1 (Dopamine 3)"
         },
         {
           "class": "DepictionTableTextView",
-          "title": "Rootless",
-          "text": "iphoneos-arm64 \u00b7 expected on iOS 16+ rootless jailbreaks"
+          "title": "rootless",
+          "text": "iphoneos-arm64 · expected on iOS 16+ rootless jailbreaks"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "### Compatibility\n\nTested on iOS 18.4.1 (Dopamine 3, roothide) on iPhone 11 Pro Max. The rootless build is expected to work on iOS 16+ rootless jailbreaks. Requires CopyLog 1.7 or 1.7.1. Where the endpoint already implements `-persistentIdentifier`, the tweak is a no-op."
         },
         {
           "class": "DepictionMarkdownView",
@@ -50,24 +54,22 @@
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "### Requirements\n\n- CopyLog 1.7 or 1.7.1 installed.\n- iOS 16.0 or later.\n- A jailbroken device with Substrate or ElleKit injection.\n- The RootHide build for RootHide devices; the rootless build for rootless devices."
+          "markdown": "### Requirements\n\n- CopyLog 1.7 or 1.7.1 installed.\n- iOS 16.0 or later.\n- A jailbroken device with Substrate or ElleKit injection.\n- The roothide build for roothide devices; the rootless build for rootless devices."
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "### Install\n\n1. Install CopyLog 1.7 or 1.7.1 first.\n2. Download the matching deb: RootHide (`iphoneos-arm64e`) or Rootless (`iphoneos-arm64`).\n3. Install with Sileo, Zebra, or Filza.\n4. Respring. The package restarts `pasted`."
-        },
-        {
-          "class": "DepictionMarkdownView",
-          "markdown": "### Verification\n\nSHA-256 checksums are published in `SHA256SUMS.txt` with the GitHub release. Verify the downloaded deb before installing it."
-        },
-        {
-          "class": "DepictionMarkdownView",
-          "markdown": "### Compatibility\n\nTested on iOS 18.4.1 (Dopamine 3, RootHide) on iPhone 11 Pro Max. The rootless build is expected to work on iOS 16+ rootless jailbreaks. Requires CopyLog 1.7 or 1.7.1. Where the endpoint already implements `-persistentIdentifier`, the tweak is a no-op."
+          "markdown": "### Verification\n\nSHA-256 checksums are published in `SHA256SUMS.txt` with the GitHub release."
         },
         {
           "class": "DepictionTableTextView",
           "title": "License",
           "text": "MIT"
+        },
+        {
+          "class": "DepictionTableButtonView",
+          "title": "View source on GitHub",
+          "action": "https://github.com/burc334/CopyLogFix18",
+          "openExternal": true
         }
       ]
     },
@@ -77,7 +79,7 @@
       "views": [
         {
           "class": "DepictionMarkdownView",
-          "markdown": "### 1.0.0\n\n- Initial release.\n- Prevents the confirmed `pasted` crash caused by `DRPasteAnnouncementContinuityEndpoint`.\n- Filtered to the `pasted` executable only.\n- Rootless and RootHide packages."
+          "markdown": "### 1.0.0\n\n- Initial release.\n- Prevents the confirmed `pasted` crash caused by `DRPasteAnnouncementContinuityEndpoint`.\n- Filtered to the `pasted` executable only.\n- rootless and roothide packages."
         }
       ]
     }

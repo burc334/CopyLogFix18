@@ -2,24 +2,24 @@
   <img src="docs/icon.png" width="160" alt="CopyLogFix18 icon">
 </p>
 
-<h1 align="center">CopyLogFix18</h1>
+# CopyLogFix18
 
 <p align="center"><strong>CopyLogFix18 is a rootless iOS jailbreak tweak that fixes the confirmed `pasted` crash caused by CopyLog 1.7.x on iOS 18.</strong></p>
 
 - Package: `com.burc334.copylogfix18`
 - Version: `1.0.0`
-- Tested: iOS 18.4.1 (Dopamine 3, RootHide) on iPhone 11 Pro Max
-- Builds: rootless (`iphoneos-arm64`) and RootHide (`iphoneos-arm64e`)
+- Tested: iOS 18.4.1 (Dopamine 3, roothide) on iPhone 11 Pro Max
+- Builds: rootless (`iphoneos-arm64`) and roothide (`iphoneos-arm64e`)
 - License: MIT
 
 ## Compatibility
 
 | Build | Architecture | Compatibility |
 |---|---|---|
-| RootHide | `iphoneos-arm64e` | Tested on iOS 18.4.1 (Dopamine 3, RootHide) |
-| Rootless | `iphoneos-arm64` | Expected to work on iOS 16+ rootless jailbreaks |
+| roothide | `iphoneos-arm64e` | Tested on iOS 18.4.1 (Dopamine 3, roothide) |
+| rootless | `iphoneos-arm64` | Expected to work on iOS 16+ rootless jailbreaks |
 
-The tweak requires iOS 16.0 or later and CopyLog 1.7 or 1.7.1. The RootHide build was tested on iOS 18.4.1. The rootless build is expected to work on iOS 16+ rootless jailbreaks. Where the endpoint already implements `-persistentIdentifier`, the tweak is a no-op.
+The tweak requires iOS 16.0 or later and CopyLog 1.7 or 1.7.1. The roothide build was tested on iOS 18.4.1. The rootless build is expected to work on iOS 16+ rootless jailbreaks. Where the endpoint already implements `-persistentIdentifier`, the tweak is a no-op.
 
 ## What it fixes
 
@@ -55,15 +55,21 @@ This is not a general iOS 18 compatibility patch for CopyLog.
 - CopyLog 1.7 or 1.7.1 installed.
 - iOS 16.0 or later.
 - A jailbroken device with Substrate or ElleKit injection.
-- The RootHide build for RootHide devices; the rootless build for rootless devices.
+- The roothide build for roothide devices; the rootless build for rootless devices.
 - The tweak is filtered to the `pasted` executable only.
 
 ## Install
 
+### Sileo
+
+Add `https://burc334.github.io/apt/` in Sileo, then install CopyLogFix18.
+
+### Manual
+
 1. Install CopyLog 1.7 or 1.7.1 first.
 2. Download the deb matching your jailbreak:
-   - RootHide: `com.burc334.copylogfix18_1.0.0_iphoneos-arm64e.deb`
-   - Rootless: `com.burc334.copylogfix18_1.0.0_iphoneos-arm64.deb`
+   - roothide: `com.burc334.copylogfix18_1.0.0_iphoneos-arm64e.deb`
+   - rootless: `com.burc334.copylogfix18_1.0.0_iphoneos-arm64.deb`
 3. Install it with Sileo, Zebra, or Filza.
 4. Respring. The package's `postinst` restarts `pasted`; CopyLog itself also restarts `pasted` on install.
 
@@ -87,7 +93,7 @@ make clean package FINALPACKAGE=1
 ./tools/make-roothide.sh
 ```
 
-The rootless deb is written to `packages/`. The RootHide script converts the latest rootless package to `iphoneos-arm64e`. Release artifacts are copied to `builds/`.
+The rootless deb is written to `packages/`. The roothide script converts the latest rootless package to `iphoneos-arm64e`. Release artifacts are copied to `builds/`.
 
 ## Verification
 
